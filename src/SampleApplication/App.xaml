@@ -1,0 +1,23 @@
+<Application x:Class="SampleApplication.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="clr-namespace:SampleApplication" 
+             StartupUri="MainWindow.xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d1p1:Ignorable="d"
+             xmlns:view="clr-namespace:SampleApplication.Views"
+             xmlns:viewmodel="clr-namespace:ApplicationViewModels.ViewModels;assembly=ApplicationViewModels"
+             xmlns:vm="clr-namespace:SampleApplication.ViewModel"
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+  <Application.Resources>
+    <ResourceDictionary>
+      <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+            <DataTemplate DataType="{x:Type viewmodel:StocksViewModel}">
+                <view:StocksView DataContext="{Binding}"/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodel:TradesViewModel}">
+                <view:TradesView DataContext="{Binding}"/>
+            </DataTemplate>
+        </ResourceDictionary>
+  </Application.Resources>
+</Application>

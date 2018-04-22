@@ -5,7 +5,7 @@ namespace StockCalculator.Core.Interfaces
 {
     public interface IStockService
     {
-        Stock GetStock(StockSymbol gIN);
+        Stock GetStock(StockSymbol symbol);
         List<Stock> GetStocks();
     }
 }

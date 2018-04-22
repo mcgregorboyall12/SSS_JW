@@ -16,16 +16,18 @@ namespace StockCalculator.Core.Entities
 
         #region public methods
 
-        public override void CalculateDividendYield(double currentStockPrice)
+        public override double CalculateDividendYield(double currentStockPrice)
         {
+            double dividendYield = 0.0;
             if (currentStockPrice != 0)
             {
-                DividendYield = (LastDividend / currentStockPrice) * 100;
+                dividendYield = (LastDividend / currentStockPrice) * 100;
             }
             else
             {
-                DividendYield = 0;
+                dividendYield = 0;
             }
+            return dividendYield;
         }
 
         #endregion

@@ -15,20 +15,43 @@ namespace StockCalculator.Core.Entities
 
     public abstract class Stock
     {
+        #region public members
+
         public StockSymbol Symbol { get; private set; }
         public double LastDividend { get; private set; }
         public double ParValue { get; private set; }
         public double StockPrice { get; private set; }
-
-        public double DividendYield { get; set; }
-        public double PERatio { get; set; }
         public List<Trade> Trades;
 
-        public abstract void CalculateDividendYield(double currentStockPrice);
+        #endregion
 
-        public void CalculatePERatio(double currentStockPrice)
+        #region Constructor
+
+        public Stock(StockSymbol symbol, double lastDividend, double parValue)
         {
-            PERatio = currentStockPrice / LastDividend;
+            StockPrice = 0.0;
+
+            Symbol = symbol;
+            LastDividend = lastDividend;
+            ParValue = parValue;
+
+            Trades = new List<Trade>();
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public abstract double CalculateDividendYield(double currentStockPrice);
+
+        public double CalculatePERatio(double currentStockPrice)
+        {
+            double peRatio = 0;
+            if (LastDividend != 0)
+            {
+                peRatio = currentStockPrice / LastDividend;
+            }
+            return peRatio;
         }
 
         public double CalculateStockPrice(DateTime startTime, DateTime endTime)
@@ -57,17 +80,6 @@ namespace StockCalculator.Core.Entities
             Trades.Add(trade);
         }
 
-        public Stock(StockSymbol symbol, double lastDividend, double parValue)
-        {
-            StockPrice = 0.0;
-            PERatio = 0.0;
-            DividendYield = 0.0;
-
-            Symbol = symbol;
-            LastDividend = lastDividend;
-            ParValue = parValue;
-
-            Trades = new List<Trade>();
-        }
+        #endregion
     }
 }

@@ -26,6 +26,7 @@ namespace StockCalculator.Core.MockServices
             }
             catch (Exception exc)
             {
+                Console.WriteLine(exc.Message);
                 return false;
             }
         }
@@ -59,12 +60,33 @@ namespace StockCalculator.Core.MockServices
                 }
                 else if (HowToBehave == Behave.DesignDataService)
                 {
-                    for (int i = 0; i < 1000000; i++)
+                    
+                    for (int i = 0; i < 1000; i++)
                     {
                         if (TradeArrived != null)
                         {
-                            TradeArrived(new Trade(StockSymbol.GIN, DateTime.Now.AddMinutes(-12), i, BuySellIndicator.BUY, i + 1));
+                            TradeArrived(new Trade(StockSymbol.GIN, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.BUY, 10.4));
+                            TradeArrived(new Trade(StockSymbol.GIN, DateTime.Now.AddMinutes(-12), 3, BuySellIndicator.BUY, 3.5));
+                            TradeArrived(new Trade(StockSymbol.GIN, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.BUY, 3.4));
+                            TradeArrived(new Trade(StockSymbol.GIN, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.SELL, 3.4));
 
+                            TradeArrived(new Trade(StockSymbol.ALE, DateTime.Now.AddMinutes(-12), 3, BuySellIndicator.BUY, 10));
+                            TradeArrived(new Trade(StockSymbol.ALE, DateTime.Now.AddMinutes(-12), 3, BuySellIndicator.BUY, 3.5));
+                            TradeArrived(new Trade(StockSymbol.ALE, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.BUY, 3.4));
+                            TradeArrived(new Trade(StockSymbol.ALE, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.SELL, 3.4));
+
+                            TradeArrived(new Trade(StockSymbol.JOE, DateTime.Now.AddMinutes(-12), 3, BuySellIndicator.BUY, 12));
+                            TradeArrived(new Trade(StockSymbol.JOE, DateTime.Now.AddMinutes(-12), 3, BuySellIndicator.BUY, 2.5));
+                            TradeArrived(new Trade(StockSymbol.JOE, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.BUY, 2.6));
+                            TradeArrived(new Trade(StockSymbol.JOE, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.SELL, 2.4));
+
+                            TradeArrived(new Trade(StockSymbol.POP, DateTime.Now.AddMinutes(-12), 3, BuySellIndicator.BUY, 3.6));
+                            TradeArrived(new Trade(StockSymbol.POP, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.BUY, 3.4));
+                            TradeArrived(new Trade(StockSymbol.POP, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.SELL, 3.1));
+
+                            TradeArrived(new Trade(StockSymbol.TEA, DateTime.Now.AddMinutes(-12), 30, BuySellIndicator.BUY, 10.5));
+                            TradeArrived(new Trade(StockSymbol.TEA, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.BUY, 10.7));
+                            TradeArrived(new Trade(StockSymbol.TEA, DateTime.Now.AddMinutes(-12), 10, BuySellIndicator.SELL, 10.9));
                         }
                     }
                 }

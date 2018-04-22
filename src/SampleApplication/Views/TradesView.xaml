@@ -23,13 +23,11 @@
         </Grid.RowDefinitions>
         <Label Margin="0,20,0,0" Content="Trades in the last 15 minutes" FontSize="20" Grid.Row="0"></Label>
 
-        <DataGrid Margin="0 8 0 0" ItemsSource="{Binding Trades}" Grid.Row="1"
+        <DataGrid Margin="0,0,20,20" ItemsSource="{Binding Trades}" Grid.Row="1" Width="500" HorizontalAlignment="Left"
                   CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
                   materialDesign:DataGridAssist.CellPadding="13 8 8 8" 
                   materialDesign:DataGridAssist.ColumnHeaderPadding="8">
             <DataGrid.Columns>
-
-
                 <materialDesign:MaterialDataGridTextColumn Binding="{Binding Symbol}"
                                                        Header="Symbol"
                                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
@@ -47,7 +45,6 @@
                                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
 
             </DataGrid.Columns>
-
         </DataGrid>
     </Grid>
 </UserControl>

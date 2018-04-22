@@ -20,16 +20,19 @@
 
         #region public methods
 
-        public override void CalculateDividendYield(double currentStockPrice)
+        public override double CalculateDividendYield(double currentStockPrice)
         {
+            double dividendYield = 0;
+
             if (currentStockPrice != 0)
             {
-                DividendYield = ((m_fixedDividend / 100) * ParValue) / currentStockPrice;
+                dividendYield = ((m_fixedDividend / 100) * ParValue) / currentStockPrice;
             }
             else
             {
-                DividendYield = 0;
+                dividendYield = 0;
             }
+            return dividendYield;
         }
 
         #endregion

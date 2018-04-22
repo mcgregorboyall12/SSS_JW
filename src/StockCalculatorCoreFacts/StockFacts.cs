@@ -14,10 +14,10 @@ namespace StockCalculatorCoreFacts
             Stock stock = new CommonStock(StockSymbol.ALE, dividend, 60);
 
             //act
-            stock.CalculateDividendYield(currentStockPrice);
+            double result = stock.CalculateDividendYield(currentStockPrice);
 
             //assert
-            Assert.Equal(2, stock.DividendYield);
+            Assert.Equal(2, result);
         }
         [Fact]
         void CommonTypeTickerPriceEquals50LastDividendEquals2YieldShouldEqual2point67Percent()
@@ -28,10 +28,10 @@ namespace StockCalculatorCoreFacts
             Stock stock = new CommonStock(StockSymbol.ALE, dividend, 60);
 
             //act
-            stock.CalculateDividendYield(currentStockPrice);
+            double result = stock.CalculateDividendYield(currentStockPrice);
 
             //assert
-            Assert.Equal(4, stock.DividendYield);
+            Assert.Equal(4, result);
         }
         [Fact]
         void CommonTypeTickerPriceEquals0LastDividendEquals2ShouldReturn0()
@@ -42,10 +42,10 @@ namespace StockCalculatorCoreFacts
             Stock stock = new CommonStock(StockSymbol.ALE, dividend, 60);
 
             //act
-            stock.CalculateDividendYield(currentStockPrice);
+            double result = stock.CalculateDividendYield(currentStockPrice);
 
             //assert
-            Assert.Equal(0, stock.DividendYield);
+            Assert.Equal(0, result);
         }
 
         [Fact]
@@ -70,10 +70,10 @@ namespace StockCalculatorCoreFacts
             Stock stock = new PreferredStock(StockSymbol.GIN, lastDividend, fixedDividend, 60);
 
             //act
-            stock.CalculateDividendYield(currentStockPrice);
+            double result = stock.CalculateDividendYield(currentStockPrice);
 
             //assert
-            Assert.Equal(0.024, stock.DividendYield);
+            Assert.Equal(0.024, result);
         }
         [Fact]
         void PreferredTypeTickerPriceEquals0LastDividendEquals2ShouldReturn0()
@@ -86,10 +86,10 @@ namespace StockCalculatorCoreFacts
             Stock stock = new PreferredStock(StockSymbol.GIN, lastDividend, fixedDividend, 60);
 
             //act
-            stock.CalculateDividendYield(currentStockPrice);
+            double result = stock.CalculateDividendYield(currentStockPrice);
 
             //assert
-            Assert.Equal(0, stock.DividendYield);
+            Assert.Equal(0, result);
         }
 
         [Fact]
@@ -112,10 +112,10 @@ namespace StockCalculatorCoreFacts
             Stock stock = new CommonStock(StockSymbol.ALE, lastDividend, 60);
 
             //act
-            stock.CalculatePERatio(currentStockPrice);
+            double peRatio = stock.CalculatePERatio(currentStockPrice);
 
             //assert
-            Assert.Equal(50, stock.PERatio);
+            Assert.Equal(50, peRatio);
         }
         [Fact]
         void PreferredTypeTickerPriceEquals50LastDividendEquals1PEShouldEqual50()
@@ -126,10 +126,10 @@ namespace StockCalculatorCoreFacts
             Stock stock = new PreferredStock(StockSymbol.ALE, lastDividend, 2, 100);
 
             //act
-            stock.CalculatePERatio(currentStockPrice);
+            double peRatio = stock.CalculatePERatio(currentStockPrice);
 
             //assert
-            Assert.Equal(50, stock.PERatio);
+            Assert.Equal(50, peRatio);
         }
     }
 }

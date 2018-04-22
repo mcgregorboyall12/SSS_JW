@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:model="clr-namespace:StockCalculator.Core.Entities;assembly=StockCalculator.Core"
+             xmlns:uiModel="clr-namespace:ApplicationViewModels.Models;assembly=ApplicationViewModels"
              xmlns:local="clr-namespace:SampleApplication.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
@@ -31,49 +31,37 @@
         <ListBox ItemsSource="{Binding Stocks}" Grid.Row="1" Width="250"
                  HorizontalAlignment="Left" ScrollViewer.CanContentScroll="False"
                  Margin="20,0,20,20" Background="Transparent" BorderBrush="{x:Null}">
-        <ListBox.ItemTemplate>
-            <DataTemplate DataType="{x:Type model:Stock}">
-                <materialDesign:Card Width="200">
-                    <Grid Width="200">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type uiModel:UIStock}">
+                    <materialDesign:Card Width="200">
+                        <Grid Width="200">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Row="0" Margin="8 24 8 0" >
-                            <TextBlock FontWeight="Bold" Text="{Binding Symbol}" FontSize="20"></TextBlock>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="P/E ratio" Width="150"></TextBlock>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding PERatio}"
+                            <StackPanel Grid.Row="0" Margin="8 0 8 0" >
+                                <TextBlock FontWeight="Bold" Text="{Binding Stock.Symbol}" FontSize="20"></TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="P/E ratio" Width="150"></TextBlock>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding PERatio}"
                                            VerticalAlignment="Center"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Dividend yield" Width="150"></TextBlock>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding DividendYield}"
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Dividend yield" Width="150"></TextBlock>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding DividendYield}"
                                            VerticalAlignment="Center"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Stock price" Width="150"></TextBlock>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding StockPrice}"
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Stock price" Width="150"></TextBlock>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding StockPrice}"
                                            VerticalAlignment="Center"></TextBlock>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-
-                        <!--<StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
-                                <Button Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0"
-                                        materialDesign:RippleAssist.IsCentered="True">
-                                    <materialDesign:PackIcon Kind="ShareVariant" />
-                                </Button>
-                                <Button Style="{StaticResource MaterialDesignToolButton}" Width="30" Padding="2 0 2 0"
-                                        materialDesign:RippleAssist.IsCentered="True">
-                                    <materialDesign:PackIcon Kind="Heart" />
-                                </Button>
-                            </StackPanel>-->
-                    </Grid>
-                </materialDesign:Card>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
-
+                        </Grid>
+                    </materialDesign:Card>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>
 

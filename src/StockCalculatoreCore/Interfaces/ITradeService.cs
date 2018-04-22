@@ -8,6 +8,5 @@ namespace StockCalculator.Core.Interfaces
     {
         event Action<Trade> TradeArrived;
         Task<bool> StartAsync();
-        //void StartMonitoring();
     }
 }

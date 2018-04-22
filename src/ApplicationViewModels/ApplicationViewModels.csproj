@@ -60,9 +60,7 @@
     <Compile Include="ViewModels\StocksViewModel.cs" />
     <Compile Include="ViewModels\TradesViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

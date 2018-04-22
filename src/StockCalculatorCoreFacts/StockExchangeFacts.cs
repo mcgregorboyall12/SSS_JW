@@ -4,6 +4,7 @@ using StockCalculator.Core.MockServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 using static StockCalculator.Core.MockServices.MockTradeService;
 
@@ -22,7 +23,7 @@ namespace StockCalculatorCore.Facts
         }
 
         [Fact]
-        public void CheckTheAllShareIndexForOneGINStockEquals1000()
+        public async Task CheckTheAllShareIndexForOneGINStockEquals1000()
         {
             //arrange
             StockExchange exchange = new StockExchange("Global Beverage Corporation Exchange");
@@ -36,7 +37,7 @@ namespace StockCalculatorCore.Facts
             {
                 stock.AddTrade(trade);
             };
-            tradeService.StartMonitoring();
+            await tradeService.StartAsync();
             stock.CalculateStockPrice(DateTime.Now, DateTime.Now.AddMinutes(-15));
 
             //act
@@ -47,7 +48,7 @@ namespace StockCalculatorCore.Facts
         }
 
         [Fact]
-        public void CheckTheAllShareIndexForAllStocksEquals1point58()
+        public async Task CheckTheAllShareIndexForAllStocksEquals1point58()
         {
             //arrange
             StockExchange exchange = new StockExchange("Global Beverage Corporation Exchange");
@@ -62,7 +63,7 @@ namespace StockCalculatorCore.Facts
                 Stock stock = stocks.FirstOrDefault(item => item.Symbol == trade.Symbol);
                 stock.AddTrade(trade);
             };
-            tradeService.StartMonitoring();
+            await tradeService.StartAsync();
 
             foreach (Stock stock in stocks)
             {

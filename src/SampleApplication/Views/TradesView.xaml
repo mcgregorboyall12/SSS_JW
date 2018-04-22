@@ -4,9 +4,50 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApplication.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DataGrid.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
-        <Label Content="trades view"></Label>  
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Margin="0,20,0,0" Content="Trades in the last 15 minutes" FontSize="20" Grid.Row="0"></Label>
+
+        <DataGrid Margin="0 8 0 0" ItemsSource="{Binding Trades}" Grid.Row="1"
+                  CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                  materialDesign:DataGridAssist.CellPadding="13 8 8 8" 
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+            <DataGrid.Columns>
+
+
+                <materialDesign:MaterialDataGridTextColumn Binding="{Binding Symbol}"
+                                                       Header="Symbol"
+                                                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:MaterialDataGridTextColumn Binding="{Binding Indicator}"
+                                                       Header="Indicator"
+                                                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:MaterialDataGridTextColumn Binding="{Binding Volume}"
+                                                       Header="Volume"
+                                                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:MaterialDataGridTextColumn Binding="{Binding Price}"
+                                                       Header="Price"
+                                                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                <materialDesign:MaterialDataGridTextColumn Binding="{Binding Timestamp}"
+                                                       Header="Timestamp"
+                                                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </UserControl>

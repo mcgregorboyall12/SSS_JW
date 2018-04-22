@@ -2,6 +2,7 @@
 using StockCalculator.Core.Interfaces;
 using StockCalculator.Core.MockServices;
 using System;
+using System.Threading.Tasks;
 using Xunit;
 using static StockCalculator.Core.MockServices.MockTradeService;
 
@@ -10,7 +11,7 @@ namespace StockCalculatorCore.Facts
     public class TradeServiceFacts
     {
         [Fact]
-        void TradeServiceDelivers10TradesForGINCheckGINStockTradesCountIs10()
+        public async Task TradeServiceDelivers10TradesForGINCheckGINStockTradesCountIs10()
         {
             //arrange
             var tradeService = new MockTradeService();
@@ -25,14 +26,14 @@ namespace StockCalculatorCore.Facts
             };
 
             //act
-            tradeService.StartMonitoring();
+            await tradeService.StartAsync();
 
             //assert
             Assert.True(stock.Trades.Count == 10);
         }
 
         [Fact]
-        void TradeServiceDeliversATradeForGINCheckGINStockTradesCountIs1()
+        public async Task TradeServiceDeliversATradeForGINCheckGINStockTradesCountIs1()
         {
             //arrange
             var tradeService = new MockTradeService();
@@ -47,7 +48,7 @@ namespace StockCalculatorCore.Facts
             };
 
             //act
-            tradeService.StartMonitoring();
+            await tradeService.StartAsync();
 
             //assert
             Assert.Single(stock.Trades);
@@ -59,7 +60,7 @@ namespace StockCalculatorCore.Facts
         }
 
         [Fact]
-        void TradeArrivesForExistingStockVolume10Price20CheckThatStockPriceIs20()
+        public async Task TradeArrivesForExistingStockVolume10Price20CheckThatStockPriceIs20()
         {
             //arrange
             var tradeService = new MockTradeService();
@@ -72,7 +73,7 @@ namespace StockCalculatorCore.Facts
             {
                 stock.AddTrade(trade);
             };
-            tradeService.StartMonitoring();
+            await tradeService.StartAsync();
 
             //act
             stock.CalculateStockPrice(DateTime.Now, DateTime.Now.AddMinutes(-15));

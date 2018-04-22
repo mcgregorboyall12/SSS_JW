@@ -31,7 +31,7 @@ namespace StockCalculator.Core.Entities
             PERatio = currentStockPrice / LastDividend;
         }
 
-        public void CalculateStockPrice(DateTime startTime, DateTime endTime)
+        public double CalculateStockPrice(DateTime startTime, DateTime endTime)
         {
             DateTime pastFifteenMinutes = DateTime.Now.AddMinutes(-15);
             double totalCostOfTrades = 0.0;
@@ -49,6 +49,7 @@ namespace StockCalculator.Core.Entities
             {
                 StockPrice = totalCostOfTrades / totalQuantity;
             }
+            return StockPrice;
         }
 
         public void AddTrade(Trade trade)

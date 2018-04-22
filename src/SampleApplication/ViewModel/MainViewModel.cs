@@ -1,6 +1,7 @@
 using ApplicationViewModels.ViewModels;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using StockCalculator.Core.Interfaces;
 
 namespace SampleApplication.ViewModel
 {
@@ -30,8 +31,9 @@ namespace SampleApplication.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel(ITradeService tradeService)
         {
+            tradeService.StartAsync();
         }
     }
 }

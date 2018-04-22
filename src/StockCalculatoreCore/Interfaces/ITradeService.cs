@@ -1,11 +1,13 @@
 ﻿using StockCalculator.Core.Entities;
 using System;
+using System.Threading.Tasks;
 
 namespace StockCalculator.Core.Interfaces
 {
     public interface ITradeService
     {
         event Action<Trade> TradeArrived;
-        void StartMonitoring();
+        Task<bool> StartAsync();
+        //void StartMonitoring();
     }
 }

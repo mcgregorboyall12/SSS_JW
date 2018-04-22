@@ -28,6 +28,7 @@ namespace SampleApplication.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
             SimpleIoc.Default.Register<IStockService, MockStockService>();
+            SimpleIoc.Default.Register<ITradeService, MockTradeService>();
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<StocksViewModel>(true);

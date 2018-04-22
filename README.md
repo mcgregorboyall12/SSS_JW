@@ -5,10 +5,12 @@ JPMorgan Super Simple Stocks c#
 c# TDD with a WPF/MVVM Light sample application, XUnit tests
 
 ## StockCalculator.Core
-Contains the business requirement entities, interfaces and mock implementations. 
+Contains the business requirement entities, interfaces and mock implementations.
+
 This project is developed as a .NET Standard library so could be pulled out into a separate nuget package and used cross-platform if required.
 
 IStockService is a service that returns some Stock objects
+
 ITradeService is a service which provides events for when a Trade arrives
 
 In a real-world application it would be possible to create a concrete implementation of the services which use real third party api's etc to pull in real data from the stock exchange, adhering to this interface would mean the layers above should just work.
